@@ -2,28 +2,36 @@ package com.company;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        System.out.print("Choose Format:\n1: Single Quotations\n2: DoubleQuotations\n==> ");
+
+        System.out.print("Choose Format:\n1: Single Quotes\n2: DoubleQuotes\nAny Char: No Quotes:\n==> ");
         Scanner input = new Scanner(System.in);
         int selection = 0;
-        selection = input.nextInt();
+        
+
+        try {
+            selection = input.nextInt();
+        } catch (Exception e) {
+            selection = 0;
+        }
 
         addQuotations(selection);
     }
 
     public static void addQuotations(int quotationType) {
-        String quoteType = null;
+        
+        String quoteType = "";
+
         if (quotationType == 1) {
             quoteType = "\'";
         } else if (quotationType == 2) {
             quoteType = "\"";
         }
+
         int i = 0;
         try {
             File myFile = new File ("file.txt");
